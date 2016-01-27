@@ -161,6 +161,10 @@ module Writexlsx
     def make_file
       store_file
     end
+
+    def get_io
+      @io
+    end
     #
     # get array of Worksheet objects
     #
