@@ -1321,7 +1321,7 @@ module Writexlsx
       packager.create_package
       packager = nil
       # Store the xlsx component files with the temp dir name removed.
-      data = File.open("#{@tempdir}", 'rb') { |io| io.read }
+      data = File.open("#{@filename}", 'rb') { |io| io.read }
 
       #IO.copy_stream(@filename, @fileobj) if @fileobj
       #Writexlsx::Utility.delete_files(@tempdir)
