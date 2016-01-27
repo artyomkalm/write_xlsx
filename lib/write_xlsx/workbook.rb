@@ -133,8 +133,7 @@ module Writexlsx
       @calc_on_load        = true
 
       if @excel2003_style
-        add_format(default_formats
-                     .merge(:xf_index => 0, :font_family => 0, :font => 'Arial', :size => 10, :theme => -1))
+        add_format(default_formats.merge(:xf_index => 0, :font_family => 0, :font => 'Arial', :size => 10, :theme => -1))
       else
         add_format(default_formats.merge(:xf_index => 0))
       end
