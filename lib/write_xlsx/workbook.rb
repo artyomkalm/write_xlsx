@@ -1300,7 +1300,7 @@ module Writexlsx
       # Store the xlsx component files with the temp dir name removed.
       #ZipFileUtils.zip("#{@tempdir}", @filename)
 
-      IO.copy_stream(@filename, @fileobj) if @fileobj
+      #IO.copy_stream(@filename, @fileobj) if @fileobj
       #Writexlsx::Utility.delete_files(@tempdir)
     end
 
