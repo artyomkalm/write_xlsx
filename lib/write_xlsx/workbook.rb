@@ -158,6 +158,9 @@ module Writexlsx
       store_workbook
     end
 
+    def make_file
+      store_file
+    end
     #
     # get array of Worksheet objects
     #
@@ -1299,6 +1302,26 @@ module Writexlsx
 
       # Store the xlsx component files with the temp dir name removed.
       #ZipFileUtils.zip("#{@tempdir}", @filename)
+
+      #IO.copy_stream(@filename, @fileobj) if @fileobj
+      #Writexlsx::Utility.delete_files(@tempdir)
+    end
+
+    def store_file #:nodoc:
+      add_worksheet if @worksheets.empty?
+      @worksheets.first.select if @activesheet == 0
+      @worksheets[@activesheet].activate
+      prepare_vml_objects
+      prepare_defined_names
+      prepare_drawings
+      add_chart_data
+      prepare_tables
+      packager = Package::Packager.new(self)
+      packager.set_package_dir(@tempdir)
+      packager.create_package
+      packager = nil
+      # Store the xlsx component files with the temp dir name removed.
+      data = File.open("#{@tempdir}", 'rb') { |io| io.read }
 
       #IO.copy_stream(@filename, @fileobj) if @fileobj
       #Writexlsx::Utility.delete_files(@tempdir)
