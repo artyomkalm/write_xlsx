@@ -6,6 +6,12 @@ require 'kconv'
 require 'zip/zipfilesystem'
 require 'fileutils'
 
+module FileUtils
+  def copy_stream(src, dest)
+    fu_copy_stream0 src, dest, fu_stream_blksize(src, dest)
+  end
+end
+
 module ZipFileUtils
 
   # src  file or directory
