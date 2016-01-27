@@ -1301,7 +1301,7 @@ module Writexlsx
       #ZipFileUtils.zip("#{@tempdir}", @filename)
 
       IO.copy_stream(@filename, @fileobj) if @fileobj
-      Writexlsx::Utility.delete_files(@tempdir)
+      #Writexlsx::Utility.delete_files(@tempdir)
     end
 
     def write_parts(zip)
